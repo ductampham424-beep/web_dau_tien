@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -146,6 +147,8 @@
             <li><a href="#lich-su">Lịch sử phát triển</a></li>
             <li><a href="#thanh-tuu">Thành tựu</a></li>
         </ul>
+       
+
     </nav>
 
     <main class="container">
@@ -157,8 +160,8 @@
                 <p>Với nhiều năm kinh nghiệm cùng đội ngũ kỹ sư chất lượng cao, Mai Trang luôn cam kết mang lại giải pháp toàn diện, tối ưu chi phí và đảm bảo an toàn tuyệt đối cho mọi công trình.</p>
             </div>
             <div class="about-img">
-                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="Công ty Mai Trang">
-            </div>
+    <img src="{% static 'images/dem-sai-gon.jpg' %}" alt="Công ty Mai Trang">
+</div>
         </section>
 
         <!-- Khối Số liệu nổi bật -->
