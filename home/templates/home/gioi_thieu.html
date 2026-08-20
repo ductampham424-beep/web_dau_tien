@@ -179,6 +179,32 @@
 .achieve-card:hover .achieve-img img { transform: scale(1.06); }
 .achieve-card h4 { color: #0e385f; font-size: 17px; margin-bottom: 8px; font-weight: 700; }
 .achieve-card p { color: #666; font-size: 13.5px; line-height: 1.5; margin: 0; }
+/* CSS Tối ưu giao diện cho điện thoại */
+@media (max-width: 768px) {
+    .container { padding: 0 15px !important; }
+    .modern-section { margin-bottom: 30px !important; }
+    .section-title { font-size: 20px !important; margin-bottom: 20px !important; }
+
+    /* Đưa các ô hiển thị về 1 cột dọc */
+    .about-grid, .vision-grid, .achieves-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    /* Co nhỏ các ô số liệu (15+, 500+,...) thành 2 cột vừa vặn */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+    .stat-number { font-size: 24px !important; }
+
+    /* Chỉnh thanh menu ngang thành menu dọc trên mobile */
+    nav ul {
+        flex-direction: column !important;
+        gap: 8px !important;
+        text-align: center;
+    }
+}
     </style>
 </head>
 <body>
