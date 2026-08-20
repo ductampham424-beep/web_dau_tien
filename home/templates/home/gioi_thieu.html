@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giới thiệu - Công ty Xây lắp Mai Trang</title>
-    <style>
+  <style>
         html {
-        scroll-behavior: smooth;
-    }
+            scroll-behavior: smooth;
+        }
         :root {
             --primary-color: #0e385f;
             --accent-color: #0056b3;
@@ -27,34 +27,33 @@
         .logo-icon { background-color: var(--primary-color); color: #fff; font-weight: bold; font-size: 22px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
         .logo-text { color: var(--primary-color); font-size: 20px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
         .nav-links { display: flex; list-style: none; gap: 25px; }
-       .nav-links a {
-    position: relative !important;
-    text-decoration: none !important;
-    color: #003b6d !important;
-    font-weight: 700 !important;
-    font-size: 13px !important;
-    text-transform: uppercase !important;
-    padding: 8px 16px !important;
-    margin: 0 4px !important;
-    
-    border-radius: 8px !important;
-    border: 2px solid #0056b3 !important;
-    background-color: #ffffff !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
-    
-    transition: all 0.3s ease-in-out !important;
-    display: inline-block !important;
-    overflow: hidden !important;
-}
+        .nav-links a {
+            position: relative !important;
+            text-decoration: none !important;
+            color: #003b6d !important;
+            font-weight: 700 !important;
+            font-size: 13px !important;
+            text-transform: uppercase !important;
+            padding: 8px 16px !important;
+            margin: 0 4px !important;
+            border-radius: 8px !important;
+            border: 2px solid #0056b3 !important;
+            background-color: #ffffff !important;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+            transition: all 0.3s ease-in-out !important;
+            display: inline-block !important;
+            overflow: hidden !important;
+        }
 
-.nav-links a:hover,
-.nav-links a.active {
-    color: #ffffff !important;
-    background-color: #0056b3 !important;
-    border-color: #003b6d !important;
-    box-shadow: 0 0 15px rgba(0, 86, 179, 0.7) !important;
-    transform: translateY(-2px) !important;
-}
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ffffff !important;
+            background-color: #0056b3 !important;
+            border-color: #003b6d !important;
+            box-shadow: 0 0 15px rgba(0, 86, 179, 0.7) !important;
+            transform: translateY(-2px) !important;
+        }
+
         /* Banner Hero có hiệu ứng chuyển động */
         .page-banner {
             position: relative;
@@ -93,8 +92,8 @@
         /* Content Sections */
         .container { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
         
-        .section-title { color: var(--primary-color); font-size: 28px; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
-        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background-color: var(--accent-color); }
+        .section-title { color: var(--primary-color); font-size: 28px; font-weight: 800; text-transform: uppercase; margin-bottom: 30px; position: relative; padding-bottom: 10px; text-align: center; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: var(--accent-color); }
 
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 60px; }
         .about-text p { margin-bottom: 15px; color: #555; text-align: justify; font-size: 15px; }
@@ -107,22 +106,31 @@
         .stat-number { font-size: 36px; font-weight: 800; color: var(--primary-color); margin-bottom: 5px; }
         .stat-label { font-size: 14px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
 
-       /* Timeline Section (Lịch sử phát triển) */
-.timeline-section { max-width: 800px; margin: 40px auto; padding: 0 20px; }
-.timeline { position: relative; padding-left: 30px; border-left: 3px solid #0e385f; }
-.timeline-item { position: relative; margin-bottom: 30px; }
-.timeline-dot {
-    position: absolute; left: -39px; top: 5px; width: 15px; height: 15px;
-    border-radius: 50%; background-color: #0e385f; border: 3px solid #fff;
-    box-shadow: 0 0 0 3px #0e385f; transition: transform 0.3s ease, background-color 0.3s ease;
-}
-.timeline-content {
-    background: #ffffff; padding: 20px; border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.timeline-item:hover .timeline-content { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(14, 56, 95, 0.15); }
-.timeline-item:hover .timeline-dot { transform: scale(1.3); background-color: #0056b3; }
-.timeline-year { display: inline-block; font-size: 1.2rem; font-weight: bold; color: #0e385f; margin-bottom: 8px; }
+        /* 1. Tầm nhìn & Sứ mệnh CSS */
+        .vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .vision-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease; }
+        .vision-card:hover { transform: translateY(-5px); }
+        .vision-img { height: 200px; overflow: hidden; }
+        .vision-img img { width: 100%; height: 100%; object-fit: cover; }
+        .vision-content { padding: 25px; }
+        .vision-content h3 { color: var(--primary-color); font-size: 20px; margin-bottom: 12px; }
+
+        /* 2. Timeline Lịch sử phát triển nâng cấp có ảnh */
+        .timeline-section { max-width: 900px; margin: 60px auto; }
+        .timeline-row { display: flex; gap: 30px; align-items: center; background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
+        .timeline-row:nth-child(even) { flex-direction: row-reverse; }
+        .timeline-media { flex: 1; height: 180px; border-radius: 8px; overflow: hidden; min-width: 250px; }
+        .timeline-media img { width: 100%; height: 100%; object-fit: cover; }
+        .timeline-info { flex: 2; }
+        .timeline-badge { display: inline-block; background: var(--primary-color); color: #fff; padding: 4px 12px; border-radius: 20px; font-weight: bold; margin-bottom: 10px; font-size: 14px; }
+
+        /* 3. Thành tựu CSS */
+        .achieves-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 60px; }
+        .achieve-card { background: #fff; border: 1px solid #e9ecef; border-radius: 10px; padding: 20px; text-align: center; transition: all 0.3s ease; }
+        .achieve-card:hover { border-color: var(--accent-color); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .achieve-img { width: 100%; height: 160px; border-radius: 8px; overflow: hidden; margin-bottom: 15px; }
+        .achieve-img img { width: 100%; height: 100%; object-fit: cover; }
+        .achieve-card h4 { color: var(--primary-color); font-size: 17px; margin-bottom: 8px; }
     </style>
 </head>
 <body>
@@ -249,70 +257,135 @@
     </section>
 </main>
     <main class="container">
-        <!-- Khối Tổng quan -->
-        <section id="tong-quan" class="about-grid">
-            <div class="about-text">
-                <h2 class="section-title">Tổng quan công ty</h2>
-                <p>Công ty Xây lắp Mai Trang là một trong những đơn vị hàng đầu trong lĩnh vực thi công nhà xưởng quy mô lớn, kết cấu thép và hạ tầng kỹ thuật công nghiệp tại Việt Nam.</p>
-                <p>Với nhiều năm kinh nghiệm cùng đội ngũ kỹ sư chất lượng cao, Mai Trang luôn cam kết mang lại giải pháp toàn diện, tối ưu chi phí và đảm bảo an toàn tuyệt đối cho mọi công trình.</p>
-            </div>
-            <div class="about-img">
-    <img src="{% static 'images/dem-sai-gon.jpg' %}" alt="Công ty Mai Trang">
-</div>
-        </section>
+    <!-- 1. Khối Tổng quan -->
+    <section id="tong-quan" class="about-grid">
+        <div class="about-text">
+            <h2 class="section-title" style="text-align: left;">TỔNG QUAN CÔNG TY</h2>
+            <p>Công ty Xây lắp Mai Trang là một trong những đơn vị hàng đầu trong lĩnh vực thi công nhà xưởng quy mô lớn, kết cấu thép và hạ tầng kỹ thuật công nghiệp tại Việt Nam.</p>
+            <p>Với nhiều năm kinh nghiệm cùng đội ngũ kỹ sư chất lượng cao, Mai Trang luôn cam kết mang lại giải pháp toàn diện, tối ưu chi phí và đảm bảo an toàn tuyệt đối cho mọi công trình.</p>
+        </div>
+        <div class="about-img">
+            <img src="{% static 'images/dem-sai-gon.jpg' %}" alt="Công ty Mai Trang">
+        </div>
+    </section>
 
-        <!-- Khối Số liệu nổi bật -->
-        <section class="stats-section">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-label">Năm kinh nghiệm</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">500+</div>
-                    <div class="stat-label">Dự án hoàn thành</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">1,200</div>
-                    <div class="stat-label">Cán bộ nhân viên</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">99%</div>
-                    <div class="stat-label">Khách hàng hài lòng</div>
-                </div>
+    <!-- Khối Số liệu nổi bật -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Năm kinh nghiệm</div>
             </div>
-        </section>
-
-        <!-- Khối Lịch sử phát triển -->
-       <section id="lich-su" class="timeline-section">
-    <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">LỊCH SỬ PHÁT TRIỂN</h2>
-    <div class="timeline">
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-                <span class="timeline-year">2010</span>
-                <p>Thành lập công ty, tập trung vào lĩnh vực tư vấn và thi công công trình dân dụng nhỏ.</p>
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Dự án hoàn thành</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1,200</div>
+                <div class="stat-label">Cán bộ nhân viên</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">99%</div>
+                <div class="stat-label">Khách hàng hài lòng</div>
             </div>
         </div>
+    </section>
 
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-                <span class="timeline-year">2016</span>
-                <p>Mở rộng quy mô sang thi công nhà xưởng công nghiệp và kết cấu thép quy mô lớn.</p>
+    <!-- 2. Khối Tầm nhìn - Sứ mệnh -->
+    <section id="tam-nhin">
+        <h2 class="section-title">TẦM NHÌN & SỨ MỆNH</h2>
+        <div class="vision-grid">
+            <div class="vision-card">
+                <div class="vision-img">
+                    <img src="{% static 'images/dem-sai-gon.jpg' %}" alt="Tầm nhìn Mai Trang">
+                </div>
+                <div class="vision-content">
+                    <h3>Tầm Nhìn Chiến Lược</h3>
+                    <p>Trở thành tập đoàn xây dựng công nghiệp hàng đầu khu vực, tiên phong ứng dụng công nghệ hiện đại và giải pháp thi công bền vững, đưa thương hiệu Việt vươn tầm quốc tế.</p>
+                </div>
+            </div>
+
+            <div class="vision-card">
+                <div class="vision-img">
+                    <img src="{% static 'images/dem-sai-gon.jpg' %}" alt="Sứ mệnh Mai Trang">
+                </div>
+                <div class="vision-content">
+                    <h3>Sứ Mệnh Khởi Tạo</h3>
+                    <p>Kiến tạo những công trình chất lượng vượt trội, đảm bảo tiến độ và an toàn tuyệt đối, đóng góp tích cực cho sự phát triển của hạ tầng công nghiệp và xã hội.</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-                <span class="timeline-year">2023 - Nay</span>
-                <p>Trở thành đối tác chiến lược của nhiều tập đoàn công nghiệp lớn trong và ngoài nước.</p>
+    <!-- 3. Khối Lịch sử phát triển -->
+    <section id="lich-su" class="timeline-section">
+        <h2 class="section-title">LỊCH SỬ PHÁT TRIỂN</h2>
+        <div class="timeline-list">
+            <div class="timeline-row">
+                <div class="timeline-media">
+                    <img src="{% static 'images/dem-sai-gon.jpg' %}" alt="Năm 2010">
+                </div>
+                <div class="timeline-info">
+                    <span class="timeline-badge">Năm 2010</span>
+                    <h3>Khởi Đầu Nền Móng</h3>
+                    <p>Thành lập công ty, tập trung vào lĩnh vực tư vấn thiết kế và thi công các công trình dân dụng nhỏ, tạo dựng uy tín ban đầu trên thị trường.</p>
+                </div>
+            </div>
+
+            <div class="timeline-row">
+                <div class="timeline-media">
+                    <img src="{% static 'images/dem-sai-gon.jpg' %}" alt="Năm 2016">
+                </div>
+                <div class="timeline-info">
+                    <span class="timeline-badge">Năm 2016</span>
+                    <h3>Bứt Phá Quy Mô</h3>
+                    <p>Mở rộng mạnh mẽ sang lĩnh vực thi công nhà xưởng công nghiệp, kết cấu thép quy mô lớn và hợp tác với các chủ đầu tư nước ngoài.</p>
+                </div>
+            </div>
+
+            <div class="timeline-row">
+                <div class="timeline-media">
+                    <img src="{% static 'images/dem-sai-gon.jpg' %}" alt="2023 - Nay">
+                </div>
+                <div class="timeline-info">
+                    <span class="timeline-badge">2023 - Nay</span>
+                    <h3>Vươn Tầm Đối Tác Chiến Lược</h3>
+                    <p>Trở thành nhà thầu chính cho hàng loạt dự án trọng điểm quốc gia, áp dụng tiêu chuẩn quản lý chất lượng ISO toàn diện.</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-    </main>
+    </section>
+
+    <!-- 4. Khối Thành tựu -->
+    <section id="thanh-tuu">
+        <h2 class="section-title">THÀNH TỰU NỔI BẬT</h2>
+        <div class="achieves-grid">
+            <div class="achieve-card">
+                <div class="achieve-img">
+                    <img src="{% static 'images/dem-sai-gon.jpg' %}" alt="Chứng nhận ISO">
+                </div>
+                <h4>Chứng Nhận ISO 9001:2015</h4>
+                <p>Đạt tiêu chuẩn quốc tế về hệ thống quản lý chất lượng trong lĩnh vực thi công xây dựng công nghiệp.</p>
+            </div>
+
+            <div class="achieve-card">
+                <div class="achieve-img">
+                    <img src="{% static 'images/dem-sai-gon.jpg' %}" alt="Top 10 nhà thầu">
+                </div>
+                <h4>Top 10 Nhà Thầu Uy Tín</h4>
+                <p>Vinh danh trong bảng xếp hạng các nhà thầu xây dựng công nghiệp uy tín hàng đầu Việt Nam.</p>
+            </div>
+
+            <div class="achieve-card">
+                <div class="achieve-img">
+                    <img src="{% static 'images/dem-sai-gon.jpg' %}" alt="Giải thưởng an toàn">
+                </div>
+                <h4>Bằng Khen An Toàn Lao Động</h4>
+                <p>Khen thưởng từ Bộ Xây Dựng cho công tác đảm bảo an toàn tuyệt đối tại 100% các công trường thi công.</p>
+            </div>
+        </div>
+    </section>
+</main>
 
     <!-- Script tạo hiệu ứng Banner động -->
     <script>
