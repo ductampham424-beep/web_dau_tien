@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CÔNG TY XÂY LẮP MAI TRANG - Hòa Hợp Cùng Phát Triển</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -191,6 +191,72 @@ nav a.active {
         .footer-col ul li a { color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s; }
         .footer-col ul li a:hover { opacity: 1; }
         .copyright { text-align: center; padding-top: 25px; font-size: 12px; opacity: 0.7; }
+        /* ==========================================
+   FIX DỨT ĐIỂM LỖI TRÀN MÀN HÌNH MOBILE
+   ========================================== */
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important; /* Chặn tuyệt đối vuốt ngang trắng xóa */
+}
+
+@media (max-width: 768px) {
+    /* 1. Ép tất cả các khung chứa về 100% chiều rộng điện thoại */
+    div, section, header, footer, main, container, nav {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 2. Fix Header & Navigation trên Mobile */
+    header {
+        padding: 10px !important;
+    }
+    
+    /* Chuyển menu nút bấm từ hàng ngang tràn màn hình thành dạng cuộn hoặc xuống dòng */
+    nav ul {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        padding: 0 !important;
+        margin: 10px 0 !important;
+    }
+    
+    nav ul li a {
+        font-size: 12px !important;
+        padding: 6px 10px !important;
+    }
+
+    /* 3. Fix Banner Hero (Khối Thi công nhà xưởng) */
+    .hero, .banner, .banner-slider {
+        height: auto !important;
+        padding: 20px 15px !important;
+    }
+
+    .hero h1, .banner h1 {
+        font-size: 20px !important;
+        line-height: 1.3 !important;
+    }
+
+    /* 4. Fix khối dịch vụ (Nút Xây lắp, Kết cấu thép,...) */
+    .services-grid, .features-grid, .products-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important; /* Ép về 1 cột dọc */
+        gap: 15px !important;
+    }
+
+    /* 5. Fix danh sách Sản phẩm & Dự án nổi bật */
+    .product-list, .project-list, .grid-container {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    /* 6. Fix hình ảnh không bị vượt quá màn hình */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}
     </style>
 </head>
 <body>
