@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CÔNG TY XÂY LẮP MAI TRANG - Hòa Hợp Cùng Phát Triển</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f8f9fa; color: #333; line-height: 1.5; overflow-x: hidden; }
+ 
+        /* HIỆU ỨNG ANIMAION CHUẨN KHI CUỘN TRANG */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+ 
+        /* 1. TOP BAR */
+        .top-bar { background-color: #f1f5f9; padding: 8px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #475569; border-bottom: 1px solid #e2e8f0; }
+        .top-bar .hotline { font-weight: 600; color: #004b87; }
+ 
+        /* 2. HEADER */
+        header { background: #ffffff; padding: 15px 60px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon { width: 46px; height: 46px; background: linear-gradient(135deg, #0068b5 0%, #004b87 100%); color: #ffffff; font-size: 24px; font-weight: bold; display: flex; align-items: center; justify-content: center; border-radius: 8px; flex-shrink: 0; }
+        .logo-text { display: flex; align-items: center; }
+        .logo-text h1, .logo-text span { font-size: 22px; font-weight: 800; color: #00335e; line-height: 1; margin: 0; padding: 0; white-space: nowrap; text-transform: uppercase; }
+        nav { display: flex; gap: 25px; }
+        nav a {
+    position: relative !important;
+    text-decoration: none !important;
+    color: #003b6d !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    text-transform: uppercase !important;
+    padding: 8px 16px !important;
+    margin: 0 4px !important;
+    
+    /* KHUNG BO GÓC VÀ NỀN TRẮNG */
+    border-radius: 8px !important;
+    border: 2px solid #0056b3 !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+    
+    transition: all 0.3s ease-in-out !important;
+    display: inline-block !important;
+    overflow: hidden !important;
+}
+
+nav a:hover,
+nav a.active {
+    color: #ffffff !important;
+    background-color: #0056b3 !important;
+    border-color: #003b6d !important;
+    
+    /* HÀO QUANG SÁNG RỰC */
+    box-shadow: 0 0 15px rgba(0, 86, 179, 0.7) !important;
+    transform: translateY(-2px) !important;
+}
+ 
+        /* 3. HERO SLIDER BANNER (DYNAMIC TABS) */
+        .hero-slider-container { position: relative; width: 100%; min-height: 520px; background-color: #002b4d; color: white; overflow: hidden; }
+        
+        .slide-item { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            opacity: 0; visibility: hidden; transition: opacity 0.6s ease-in-out, visibility 0.6s; 
+            background-size: cover; background-position: center; 
+            padding: 90px 60px 140px 60px; 
+            display: flex; align-items: center; 
+        }
+        .slide-item.active { opacity: 1; visibility: visible; }
+        
+        .slide-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(0, 43, 77, 0.85) 0%, rgba(0, 51, 94, 0.5) 60%, rgba(0, 0, 0, 0.1) 100%); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; max-width: 750px; }
+        .hero-subtitle { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; color: #38bdf8; }
+        .hero-title { font-size: 44px; font-weight: 900; line-height: 1.2; margin-bottom: 20px; text-transform: uppercase; }
+        .hero-desc { font-size: 16px; line-height: 1.6; opacity: 0.9; margin-bottom: 30px; }
+        .hero-btns { display: flex; gap: 15px; }
+        .btn { padding: 12px 28px; font-weight: 700; font-size: 13px; text-decoration: none; border-radius: 4px; text-transform: uppercase; transition: all 0.3s; }
+        .btn-primary { background: #ffffff; color: #00335e; }
+        .btn-primary:hover { background: #e2e8f0; }
+        .btn-outline { border: 1.5px solid #ffffff; color: #ffffff; }
+        .btn-outline:hover { background: rgba(255,255,255,0.1); }
+ 
+        /* 4. TAB NAVIGATION BAR */
+        .category-tab-bar { 
+            position: absolute; bottom: 0; left: 0; width: 100%; z-index: 10; 
+            background: rgba(0, 43, 77, 0.95); display: flex; justify-content: space-between; 
+            border-top: 1px solid rgba(255,255,255,0.15); 
+        }
+        .tab-btn { 
+            color: #e2e8f0; text-decoration: none; padding: 16px 10px; font-size: 12px; font-weight: 700; 
+            text-transform: uppercase; letter-spacing: 0.5px; flex: 1; text-align: center; 
+            border-right: 1px solid rgba(255,255,255,0.08); background: transparent; border-top: none; border-bottom: 4px solid transparent; 
+            cursor: pointer; transition: all 0.3s; 
+        }
+        .tab-btn:hover { background: rgba(255,255,255,0.05); color: #ffffff; }
+        .tab-btn.active { background: #ffffff; color: #004077; border-bottom-color: #005696; font-weight: 800; }
+ 
+        /* GENERAL SECTION STYLES */
+        .container { padding: 70px 60px; max-width: 1400px; margin: 0 auto; }
+        .section-header { margin-bottom: 40px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .section-title { font-size: 22px; color: #00335e; font-weight: 800; text-transform: uppercase; border-bottom: 3px solid #005696; padding-bottom: 10px; margin-bottom: -12px; }
+ 
+        /* PRODUCTS GRID */
+        .grid-products { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: white; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; border: 1px solid #edf2f7; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .card-img-wrap { width: 100%; height: 210px; overflow: hidden; background-color: #e2e8f0; }
+        .card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+        .card:hover img { transform: scale(1.05); }
+        .card-body { padding: 20px; }
+        .card-title { font-size: 17px; margin-bottom: 10px; line-height: 1.4; }
+        .card-title a { color: #00335e; text-decoration: none; font-weight: 700; transition: color 0.2s; }
+        .card-title a:hover { color: #005696; }
+        .card-desc { font-size: 13px; color: #64748b; line-height: 1.5; margin-bottom: 15px; }
+        .card-price { color: #d97706; font-weight: 700; font-size: 14px; border-top: 1px solid #f1f5f9; padding-top: 12px; }
+ 
+        /* 5. VỀ MAI TRANG (THỐNG KÊ - GIAO DIỆN CHUẨN MẪU HÒA PHÁT) */
+        .stats-section { 
+            position: relative;
+            background: #00529c url('https://upload.wikimedia.org/wikipedia/commons/2/2c/Rotating_earth_%28large%29.gif') center/cover no-repeat;
+            background-blend-mode: overlay;
+            color: white; 
+            padding: 90px 80px; 
+            overflow: hidden;
+        }
+        /* Phủ màu xanh đậm và hiệu ứng đĩa địa cầu */
+        .stats-section::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #004b8d 0%, #00335e 100%);
+            opacity: 0.92;
+            z-index: 1;
+        }
+        
+        .stats-wrapper { 
+            position: relative;
+            z-index: 2;
+            max-width: 1300px; 
+            margin: 0 auto; 
+            display: grid; 
+            grid-template-columns: 1fr 1.2fr; 
+            gap: 80px; 
+            align-items: center;
+        }
+ 
+        .stats-left { padding-right: 20px; }
+        .stats-tag { 
+            background: white; 
+            color: #00335e; 
+            padding: 8px 18px; 
+            font-weight: 800; 
+            font-size: 13px; 
+            text-transform: uppercase; 
+            display: inline-block; 
+            margin-bottom: 40px; 
+            letter-spacing: 0.5px;
+        }
+ 
+        .stat-item { 
+            margin-bottom: 25px; 
+            border-bottom: 1px solid rgba(255,255,255,0.15); 
+            padding-bottom: 20px; 
+        }
+        .stat-label { font-size: 14px; opacity: 0.85; margin-bottom: 8px; font-weight: 500; }
+        .stat-number { font-size: 42px; font-weight: 900; line-height: 1; }
+        .stat-number span.symbol { font-size: 32px; font-weight: 700; }
+        .stat-number span.unit { font-size: 15px; font-weight: 500; opacity: 0.85; margin-left: 5px; }
+        
+        .stats-right h3 { font-size: 26px; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stats-right p { font-size: 14px; opacity: 0.85; margin-bottom: 40px; line-height: 1.7; max-width: 550px; }
+        
+        .locations-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 40px; }
+        .location-item { font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 10px; }
+        .location-item::before { content: "◆"; color: #ffffff; font-size: 10px; }
+ 
+        /* 6. NEWS SECTION */
+        .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .news-card { background: white; border-top: 4px solid #005696; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); display: flex; flex-direction: column; justify-content: space-between; }
+        .news-date { font-size: 12px; color: #94a3b8; margin-bottom: 10px; font-weight: 600; }
+        .news-title { font-size: 16px; color: #0f172a; font-weight: 700; margin-bottom: 12px; line-height: 1.4; }
+        .news-desc { font-size: 13px; color: #64748b; line-height: 1.6; margin-bottom: 20px; }
+        .news-link { color: #005696; text-decoration: none; font-weight: 700; font-size: 13px; }
+ 
+        /* 7. FOOTER */
+        footer { background: #003b6d; color: white; padding: 60px 60px 30px 60px; font-size: 13px; }
+        .footer-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1.5fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.15); }
+        .footer-col h4 { font-size: 14px; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px; }
+        .footer-col p { opacity: 0.8; line-height: 1.6; margin-bottom: 10px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s; }
+        .footer-col ul li a:hover { opacity: 1; }
+        .copyright { text-align: center; padding-top: 25px; font-size: 12px; opacity: 0.7; }
+    </style>
+</head>
+<body>
+ 
+  <!-- TOPBAR -->
+<div class="top-bar">
+    <div>📞 Đường dây nóng: <span class="hotline">0989 135 769</span> | 📧 Email: <span style="font-weight: bold;">ductampham424@gmail.com</span></div>
+    <div><strong>CÔNG TY TNHH XÂY LẮP MAI TRANG</strong></div>
+</div>
+    <!-- HEADER MAIN -->
+    <header>
+        <a href="/" class="logo-box">
+            <div class="logo-icon">T</div>
+            <div class="logo-text">
+               <h1>CÔNG TY XÂY LẮP MAI TRANG</h1>
+            </div>
+        </a>
+        <nav>
+            <a href="/" class="active">Trang chủ</a>
+            <a href="{% url 'gioi_thieu' %}">Giới thiệu</a>
+            <a href="{% url 'san_pham' %}">Sản phẩm</a>
+           <a href="{% url 'tin_tuc' %}">Tin tức</a>
+            <a href="#">Hệ thống</a>
+        </nav>
+    </header>
+ 
+    <!-- DYNAMIC BANNER HERO WITH INTERACTIVE TABS -->
+    <div class="hero-slider-container">
+        <div class="slide-item active" id="slide-0" style="background-image: url('https://img.magnific.com/hinh-chup-mien-phi/hinh-bong-cong-trinh_1127-3246.jpg?semt=ais_test_b&w=740&q=80');">
+            <div class="slide-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-subtitle">› XÂY LẮP NHÀ XƯỞNG</div>
+                <h2 class="hero-title">THI CÔNG NHÀ XƯỞNG<br>QUY MÔ LỚN</h2>
+                <p class="hero-desc">Cung cấp giải pháp tổng thể thiết kế và thi công nhà xưởng công nghiệp chuẩn quốc tế, đảm bảo an toàn và tiến độ vượt trội.</p>
+                <div class="hero-btns">
+                    <a href="#" class="btn btn-primary">XEM DỰ ÁN ›</a>
+                    <a href="#" class="btn btn-outline">LIÊN HỆ NGAY</a>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="slide-item" id="slide-1" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600&auto=format&fit=crop');">
+            <div class="slide-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-subtitle">› KẾT CẤU THÉP</div>
+                <h2 class="hero-title">SẢN XUẤT & LẮP ĐẶT<br>KẾT CẤU THÉP TIỀN CHẾ</h2>
+                <p class="hero-desc">Hệ thống khung thép chịu lực cao, gia công trên dây chuyền tự động hóa giúp giảm thiểu chi phí và tối ưu thời gian lắp ghép.</p>
+                <div class="hero-btns">
+                    <a href="#" class="btn btn-primary">XEM GIẢI PHÁP ›</a>
+                    <a href="#" class="btn btn-outline">TƯ VẤN KỸ THUẬT</a>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="slide-item" id="slide-2" style="background-image: url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1600&auto=format&fit=crop');">
+            <div class="slide-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-subtitle">› LẮP ĐẶT THIẾT BỊ</div>
+                <h2 class="hero-title">DÂY CHUYỀN THIẾT BỊ<br>CÔNG NGHIỆP NẶNG</h2>
+                <p class="hero-desc">Đội ngũ kỹ sư giàu kinh nghiệm chuyên nhận di dời, lắp đặt và hiệu chỉnh các dây chuyền máy móc công nghiệp phức tạp.</p>
+                <div class="hero-btns">
+                    <a href="#" class="btn btn-primary">CHI TIẾT DỊCH VỤ ›</a>
+                    <a href="#" class="btn btn-outline">BÁO GIÁ</a>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="slide-item" id="slide-3" style="background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1600&auto=format&fit=crop');">
+            <div class="slide-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-subtitle">› CƠ ĐIỆN M&E</div>
+                <h2 class="hero-title">HỆ THỐNG M&E<br>CHUYÊN NGHIỆP</h2>
+                <p class="hero-desc">Thi công hệ thống điện hạ thế/trung thế, hệ thống điều hòa thông gió, PCCC và cấp thoát nước trọn gói cho nhà máy.</p>
+                <div class="hero-btns">
+                    <a href="#" class="btn btn-primary">TÌM HIỂU THÊM ›</a>
+                    <a href="#" class="btn btn-outline">LIÊN HỆ</a>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="slide-item" id="slide-4" style="background-image: url('https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?q=80&w=1600&auto=format&fit=crop');">
+            <div class="slide-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-subtitle">› HẠ TẦNG KỸ THUẬT</div>
+                <h2 class="hero-title">XÂY DỰNG HẠ TẦNG<br>KHU CÔNG NGHIỆP</h2>
+                <p class="hero-desc">Thi công đường nội bộ, hệ thống xử lý nước thải và quy hoạch hạ tầng tổng thể đạt chuẩn môi trường.</p>
+                <div class="hero-btns">
+                    <a href="#" class="btn btn-primary">XEM DỰ ÁN ›</a>
+                    <a href="#" class="btn btn-outline">LIÊN HỆ</a>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="slide-item" id="slide-5" style="background-image: url('https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=1600&auto=format&fit=crop');">
+            <div class="slide-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-subtitle">› BẢO TRÌ CÔNG NGHIỆP</div>
+                <h2 class="hero-title">DỊCH VỤ BẢO TRÌ<br>& SỬA CHỮA TOÀN DIỆN</h2>
+                <p class="hero-desc">Bảo dưỡng định kỳ, khắc phục sự cố 24/7 giúp nhà máy vận hành liên tục, giảm thiểu thời gian dừng máy tối đa.</p>
+                <div class="hero-btns">
+                    <a href="#" class="btn btn-primary">ĐĂNG KÝ BẢO TRÌ ›</a>
+                    <a href="#" class="btn btn-outline">HOTLINE SUPPORT</a>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- DANH MỤC TABS DƯỚI BANNER -->
+        <div class="category-tab-bar">
+            <button class="tab-btn active" onclick="switchTab(0)">XÂY LẮP NHÀ XƯỞNG</button>
+            <button class="tab-btn" onclick="switchTab(1)">KẾT CẤU THÉP</button>
+            <button class="tab-btn" onclick="switchTab(2)">LẮP ĐẶT THIẾT BỊ</button>
+            <button class="tab-btn" onclick="switchTab(3)">CƠ ĐIỆN M&E</button>
+            <button class="tab-btn" onclick="switchTab(4)">HẠ TẦNG KỸ THUẬT</button>
+            <button class="tab-btn" onclick="switchTab(5)">BẢO TRÌ CÔNG NGHIỆP</button>
+        </div>
+    </div>
+ 
+    <!-- SẢN PHẨM / DỰ ÁN NỔI BẬT -->
+    <div class="container reveal">
+        <div class="section-header">
+            <h2 class="section-title">SẢN PHẨM & DỰ ÁN NỔI BẬT</h2>
+        </div>
+        <form method="GET" action="" style="margin-bottom: 30px; display: flex; gap: 10px;">
+            <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Tìm kiếm dự án, sản phẩm..." 
+                   style="padding: 10px; width: 300px; border: 1px solid #ccc; border-radius: 4px;">
+            <button type="submit" style="padding: 10px 20px; background: #005696; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                Tìm kiếm
+            </button>
+        </form>
+        
+        <div class="grid-products">
+            {% for sp in ds_san_pham %}
+            <div class="card reveal">
+                <div class="card-img-wrap">
+                    {% if sp.anh_san_pham %}
+                        <img src="{{ sp.anh_san_pham.url }}" alt="{{ sp.ten_san_pham }}">
+                    {% else %}
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600&auto=format&fit=crop" alt="Default Image">
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">
+                        <a href="#">{{ sp.ten_san_pham }}</a>
+                    </h3>
+                    <p class="card-desc">{{ sp.mo_ta }}</p>
+                    <div class="card-price">Giá: {{ sp.gia }}</div>
+                </div>
+            </div>
+            {% empty %}
+            <p>Chưa có sản phẩm nào được đăng.</p>
+            {% endfor %}
+        </div>
+    </div>
+ 
+    <!-- KHỐI VỀ MAI TRANG (HỆ THỐNG THỐNG KÊ CHUẨN MẪU) -->
+    <!-- KHỐI VỀ MAI TRANG (ĐÃ SỬA LỖI HIỂN THỊ) -->
+    <div class="stats-section reveal">
+        <div class="stats-wrapper">
+            <div class="stats-left">
+                <div class="stats-tag">VỀ MAI TRANG</div>
+                
+                <div class="stat-item">
+                    <div class="stat-label">Số công trình đã bàn giao</div>
+                    <div class="stat-number">&rsaquo; 250<span class="symbol">+</span> <span class="unit">dự án</span></div>
+                </div>
+ 
+                <div class="stat-item">
+                    <div class="stat-label">Kinh nghiệm thi công</div>
+                    <div class="stat-number">&rsaquo; 15 <span class="unit">năm</span></div>
+                </div>
+ 
+                <div class="stat-item">
+                    <div class="stat-label">Cán bộ &ndash; kỹ sư &ndash; công nhân</div>
+                    <div class="stat-number">&rsaquo; 500<span class="symbol">+</span> <span class="unit">người</span></div>
+                </div>
+ 
+                <div class="stat-item" style="border: none;">
+                    <div class="stat-label">Tổng diện tích nhà xưởng</div>
+                    <div class="stat-number">&rsaquo; 1.200.000 <span class="unit">m&sup2;</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- BẮT ĐẦU: Hệ thống công trình & văn phòng - Cấu trúc tối ưu -->
+<!-- KHỐI THỐNG KÊ & HỆ THỐNG CÔNG TRÌNH -->
+<section style="background: linear-gradient(135deg, #00335e 0%, #001a30 100%); padding: 60px 8%; color: #ffffff; position: relative;">
+    
+    <!-- 1. CÁC THẺ THỐNG KÊ CHỈ SỐ -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 50px;">
+        
+        <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 25px 20px; text-align: center;">
+            <div style="font-size: 38px; font-weight: 800; color: #38bdf8; line-height: 1;">250+</div>
+            <div style="font-size: 14px; margin-top: 10px; color: #cbd5e1; font-weight: 500;">Công trình bàn giao</div>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 25px 20px; text-align: center;">
+            <div style="font-size: 38px; font-weight: 800; color: #38bdf8; line-height: 1;">15</div>
+            <div style="font-size: 14px; margin-top: 10px; color: #cbd5e1; font-weight: 500;">Năm kinh nghiệm</div>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 25px 20px; text-align: center;">
+            <div style="font-size: 38px; font-weight: 800; color: #38bdf8; line-height: 1;">500+</div>
+            <div style="font-size: 14px; margin-top: 10px; color: #cbd5e1; font-weight: 500;">Cán bộ - Kỹ sư</div>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 25px 20px; text-align: center;">
+            <div style="font-size: 38px; font-weight: 800; color: #38bdf8; line-height: 1;">1.2tr m²</div>
+            <div style="font-size: 14px; margin-top: 10px; color: #cbd5e1; font-weight: 500;">Diện tích nhà xưởng</div>
+        </div>
+
+    </div>
+
+    <!-- 2. HỆ THỐNG CÔNG TRÌNH & VĂN PHÒNG DỰ ÁN -->
+    <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 40px;">
+        <h2 style="font-size: 26px; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 10px; color: #ffffff;">HỆ THỐNG CÔNG TRÌNH & VĂN PHÒNG DỰ ÁN</h2>
+        <p style="color: #94a3b8; font-size: 15px; margin-bottom: 30px; max-width: 800px;">
+            Mai Trang hiện diện tại nhiều tỉnh thành trọng điểm trên cả nước, sẵn sàng triển khai thi công và bảo trì công nghiệp trọn gói.
+        </p>
+
+        <!-- DANH SÁCH CHI NHÁNH / VĂN PHÒNG -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px;">
+            <div style="background: rgba(255, 255, 255, 0.08); padding: 12px 18px; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+                <span style="color: #38bdf8;">📍</span> Hà Nội
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.08); padding: 12px 18px; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+                <span style="color: #38bdf8;">📍</span> Hải Phòng
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.08); padding: 12px 18px; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+                <span style="color: #38bdf8;">📍</span> Quảng Ninh
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.08); padding: 12px 18px; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+                <span style="color: #38bdf8;">📍</span> TP. Hồ Chí Minh
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.08); padding: 12px 18px; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+                <span style="color: #38bdf8;">📍</span> Lào Cai
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.08); padding: 12px 18px; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+                <span style="color: #38bdf8;">📍</span> Bắc Ninh
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.08); padding: 12px 18px; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+                <span style="color: #38bdf8;">📍</span> Thái Nguyên
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.08); padding: 12px 18px; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+                <span style="color: #38bdf8;">📍</span> Đồng Nai
+            </div>
+        </div>
+    </div>
+</section>
+<!-- KẾT THÚC: Hệ thống công trình -->
+    <!-- TIN TỨC & SỰ KIỆN -->
+    <div class="container reveal">
+        <div class="section-header">
+            <h2 class="section-title">TIN TỨC & SỰ KIỆN</h2>
+        </div>
+ 
+        <div class="news-grid">
+            <div class="news-card reveal">
+                <div>
+                    <div class="news-date">12/08/2026</div>
+                    <h3 class="news-title">Mai Trang khởi công dự án nhà xưởng graphit tại Lào Cai</h3>
+                    <p class="news-desc">Dự án được triển khai theo hình thức trọn gói, dự kiến hoàn thành và bàn giao đúng tiến độ cam kết với chủ đầu tư.</p>
+                </div>
+                <a href="#" class="news-link">Đọc thêm →</a>
+            </div>
+ 
+            <div class="news-card reveal">
+                <div>
+                    <div class="news-date">28/07/2026</div>
+                    <h3 class="news-title">Ứng dụng kết cấu thép tiền chế trong thi công nhà máy</h3>
+                    <p class="news-desc">Giải pháp giúp rút ngắn thời gian thi công, tối ưu chi phí và đảm bảo chất lượng công trình công nghiệp.</p>
+                </div>
+                <a href="#" class="news-link">Đọc thêm →</a>
+            </div>
+ 
+            <div class="news-card reveal">
+                <div>
+                    <div class="news-date">05/07/2026</div>
+                    <h3 class="news-title">Mai Trang mở rộng đội ngũ kỹ sư cơ điện M&E</h3>
+                    <p class="news-desc">Nhằm đáp ứng nhu cầu lắp đặt thiết bị và hệ thống cơ điện ngày càng lớn từ các khu công nghiệp.</p>
+                </div>
+                <a href="#" class="news-link">Đọc thêm →</a>
+            </div>
+        </div>
+    </div>
+ 
+    <!-- FOOTER -->
+    <footer class="reveal">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo-box" style="margin-bottom: 15px;">
+                    <div class="logo-icon" style="background: white; color: #003b6d;">T</div>
+                    <div class="logo-text">
+                        <h1 style="color: white;">MAI TRANG</h1>
+                        <span style="color: #cbd5e1;">CÔNG TY XÂY LẮP</span>
+                    </div>
+                </div>
+                <p>Nhà thầu xây lắp công nghiệp — thi công nhà xưởng, kết cấu thép và lắp đặt thiết bị trọn gói trên toàn quốc.</p>
+            </div>
+ 
+            <div class="footer-col">
+                <h4>LIÊN HỆ</h4>
+                <p>📍 Số 1, KCN, TP. Lào Cai, tỉnh Lào Cai, Việt Nam</p>
+                <p>📞 0989 135 769</p>
+                <p>📧 info@maitrang.com.vn</p>
+            </div>
+ 
+            <div class="footer-col">
+                <h4>DỊCH VỤ</h4>
+                <ul>
+                    <li><a href="#">Xây lắp nhà xưởng</a></li>
+                    <li><a href="#">Kết cấu thép</a></li>
+                    <li><a href="#">Lắp đặt thiết bị</a></li>
+                    <li><a href="#">Cơ điện M&E</a></li>
+                    <li><a href="#">Bảo trì công nghiệp</a></li>
+                </ul>
+            </div>
+ 
+            <div class="footer-col">
+                <h4>LIÊN KẾT</h4>
+                <ul>
+                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="#">Giới thiệu</a></li>
+                    <li><a href="#">Sản phẩm</a></li>
+                    <li><a href="#">Tin tức</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Bản quyền thuộc về Công ty Xây lắp Mai Trang. Tất cả các quyền được bảo lưu.
+        </div>
+    </footer>
+ 
+    <!-- JAVASCRIPT -->
+    <script>
+        function switchTab(index) {
+            const slides = document.querySelectorAll('.slide-item');
+            const tabs = document.querySelectorAll('.tab-btn');
+ 
+            slides.forEach(slide => slide.classList.remove('active'));
+            tabs.forEach(tab => tab.classList.remove('active'));
+ 
+            slides[index].classList.add('active');
+            tabs[index].classList.add('active');
+        }
+ 
+        document.addEventListener("DOMContentLoaded", function () {
+            const reveals = document.querySelectorAll(".reveal");
+ 
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                    }
+                });
+            }, { threshold: 0.15 });
+ 
+            reveals.forEach((el) => observer.observe(el));
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<script>
+  window.addEventListener('load', function() {
+    confetti({
+      particleCount: 120,
+      spread: 100,
+      origin: { y: 0.6 }
+    });
+
+    var duration = 2.5 * 1000;
+    var end = Date.now() + duration;
+
+    (function frame() {
+      confetti({
+        particleCount: 3,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0, y: 0.8 }
+      });
+      confetti({
+        particleCount: 3,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1, y: 0.8 }
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    }());
+  });
+</script>
+</body>
+</html>

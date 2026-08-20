@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản Phẩm & Dịch Vụ - Mai Trang</title>
+    <style>
+        :root {
+            --primary-color: #0e385f;
+            --accent-color: #0056b3;
+            --bg-light: #f4f6f9;
+            --text-color: #333333;
+            --text-muted: #6c757d;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-color); line-height: 1.6; }
+
+        /* Header Navigation */
+        header { background-color: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; max-width: 1200px; margin: 0 auto; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon { background-color: var(--primary-color); color: #fff; font-weight: bold; font-size: 22px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
+        .logo-text { color: var(--primary-color); font-size: 20px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { text-decoration: none; color: #444; font-weight: 700; font-size: 14px; text-transform: uppercase; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-color); }
+
+        /* Page Banner */
+        .page-banner {
+            background: linear-gradient(rgba(14, 56, 95, 0.85), rgba(14, 56, 95, 0.85)), 
+                        url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=80') center/cover;
+            color: white; padding: 50px 20px; text-align: center;
+        }
+        .page-banner h1 { font-size: 32px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .breadcrumb { font-size: 14px; opacity: 0.9; }
+        .breadcrumb a { color: #fff; text-decoration: none; }
+
+        /* Products Grid */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+        .product-card { background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .product-image { width: 100%; height: 220px; object-fit: cover; background-color: #e9ecef; }
+        .product-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+        .product-title { font-size: 18px; color: var(--primary-color); margin-bottom: 10px; font-weight: 700; }
+        .product-desc { color: #555; font-size: 14px; margin-bottom: 15px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .btn-detail { display: block; text-align: center; background-color: var(--primary-color); color: #fff; text-decoration: none; padding: 10px; border-radius: 4px; font-weight: 600; font-size: 14px; transition: background 0.2s; }
+        .btn-detail:hover { background-color: var(--accent-color); }
+        .empty-box { grid-column: 1 / -1; text-align: center; padding: 50px; background: #fff; border-radius: 8px; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <a href="{% url 'trang_chu' %}" class="logo">
+                <div class="logo-icon">T</div>
+                <div class="logo-text">Công ty Xây lắp Mai Trang</div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="{% url 'trang_chu' %}">Trang chủ</a></li>
+                <li><a href="{% url 'gioi_thieu' %}">Giới thiệu</a></li>
+                <li><a href="{% url 'san_pham' %}" class="active">Sản phẩm</a></li>
+                <li><a href="{% url 'tin_tuc' %}">Tin tức</a></li>
+                <li><a href="#">Hệ thống</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="page-banner">
+        <h1>Sản Phẩm & Dịch Vụ</h1>
+        <div class="breadcrumb">
+            <a href="{% url 'trang_chu' %}">Trang chủ</a> / <span>Sản phẩm</span>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="product-grid">
+            {% for sp in ds_san_pham %}
+                <article class="product-card">
+                    <!-- ĐÃ SỬA: Thay 'hinh_anh' thành 'anh_san_pham' -->
+                    {% if sp.anh_san_pham %}
+                        <img src="{{ sp.anh_san_pham.url }}" alt="{{ sp.ten_san_pham }}" class="product-image">
+                    {% else %}
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" alt="Mai Trang Product" class="product-image">
+                    {% endif %}
+
+                    <div class="product-content">
+                        <h2 class="product-title">{{ sp.ten_san_pham }}</h2>
+                        <p class="product-desc">{{ sp.mo_ta|truncatewords:20 }}</p>
+                        <a href="{% url 'chi_tiet_san_pham' sp.id %}" class="btn-detail">Xem chi tiết</a>
+                    </div>
+                </article>
+            {% empty %}
+                <div class="empty-box">
+                    <p>Hiện tại chưa có sản phẩm nào được cập nhật.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+
+</body>
+</html>

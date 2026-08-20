@@ -1,0 +1,53 @@
+/* THANH MENU CÓ KHUNG VIỀN CỐ ĐỊNH & HIỆU ỨNG ÁNH SÁNG */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 12px;
+    align-items: center;
+}
+
+.nav-links a {
+    position: relative;
+    text-decoration: none;
+    color: #003b6d;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    
+    /* KHUNG VIỀN VÀ NỀN HIỆN SẴN */
+    border-radius: 8px;
+    border: 2px solid #cbd5e1;             /* Khung viền hiện rõ */
+    background-color: #ffffff;            /* Nền trắng nổi bật */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);  /* Nhô nhẹ so với nền */
+    
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* NÚT ĐANG CHỌN Hoặc DI CHUỘT VÀO: Bật hiệu ứng Đèn Phát Sáng (Glow) */
+.nav-links a:hover, 
+.nav-links a.active {
+    color: #0056b3;
+    border-color: #0056b3;                  /* Viền chuyển màu xanh đậm */
+    background-color: #eff6ff;             /* Đổi màu nền xanh dịu */
+    box-shadow: 0 0 15px rgba(0, 86, 179, 0.5);  /* Hào quang phát sáng rực rỡ */
+    transform: translateY(-2px);            /* Nổi lên trên */
+}
+
+/* TIA SÁNG LƯỚT QUANH KHUNG */
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    transition: 0.5s;
+}
+
+.nav-links a:hover::before {
+    left: 100%;
+}

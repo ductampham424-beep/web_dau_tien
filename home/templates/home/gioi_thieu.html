@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu - Công ty Xây lắp Mai Trang</title>
+    <style>
+        :root {
+            --primary-color: #0e385f;
+            --accent-color: #0056b3;
+            --bg-light: #f4f6f9;
+            --text-dark: #333333;
+            --text-muted: #6c757d;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #fff; color: var(--text-dark); line-height: 1.6; }
+
+        /* Header Navigation */
+        header { background-color: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; max-width: 1200px; margin: 0 auto; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon { background-color: var(--primary-color); color: #fff; font-weight: bold; font-size: 22px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
+        .logo-text { color: var(--primary-color); font-size: 20px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+       .nav-links a {
+    position: relative !important;
+    text-decoration: none !important;
+    color: #003b6d !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    text-transform: uppercase !important;
+    padding: 8px 16px !important;
+    margin: 0 4px !important;
+    
+    border-radius: 8px !important;
+    border: 2px solid #0056b3 !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+    
+    transition: all 0.3s ease-in-out !important;
+    display: inline-block !important;
+    overflow: hidden !important;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ffffff !important;
+    background-color: #0056b3 !important;
+    border-color: #003b6d !important;
+    box-shadow: 0 0 15px rgba(0, 86, 179, 0.7) !important;
+    transform: translateY(-2px) !important;
+}
+        /* Banner Hero có hiệu ứng chuyển động */
+        .page-banner {
+            position: relative;
+            background: linear-gradient(135deg, #0a2540 0%, #0e385f 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #banner-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-banner h1 { font-size: 34px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; font-weight: 800; }
+        .breadcrumb { font-size: 14px; opacity: 0.9; }
+        .breadcrumb a { color: #fff; text-decoration: none; }
+
+        /* Secondary Sub-Nav (Kiểu Hòa Phát) */
+        .sub-nav { background: #e9ecef; border-bottom: 1px solid #dee2e6; position: sticky; top: 72px; z-index: 999; }
+        .sub-nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 30px; list-style: none; }
+        .sub-nav-container a { display: block; padding: 15px 10px; color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 15px; border-bottom: 3px solid transparent; }
+        .sub-nav-container a:hover, .sub-nav-container a.active { color: var(--primary-color); border-bottom-color: var(--primary-color); }
+
+        /* Content Sections */
+        .container { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
+        
+        .section-title { color: var(--primary-color); font-size: 28px; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background-color: var(--accent-color); }
+
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 60px; }
+        .about-text p { margin-bottom: 15px; color: #555; text-align: justify; font-size: 15px; }
+        .about-img img { width: 100%; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        /* Stats Section (Số liệu nổi bật) */
+        .stats-section { background-color: var(--bg-light); padding: 50px 20px; margin: 40px 0; border-radius: 8px; }
+        .stats-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+        .stat-card { background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .stat-number { font-size: 36px; font-weight: 800; color: var(--primary-color); margin-bottom: 5px; }
+        .stat-label { font-size: 14px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+
+        /* Timeline Section (Lịch sử phát triển) */
+        .timeline { position: relative; max-width: 800px; margin: 40px auto; padding: 20px 0; }
+        .timeline-item { padding: 20px 30px; position: relative; background: #f8f9fa; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 0 8px 8px 0; }
+        .timeline-year { font-weight: 800; font-size: 20px; color: var(--accent-color); margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+    <!-- Main Header -->
+    <header>
+        <div class="navbar">
+            <a href="{% url 'trang_chu' %}" class="logo">
+                <div class="logo-icon">T</div>
+                <div class="logo-text">Công ty Xây lắp Mai Trang</div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="{% url 'trang_chu' %}">Trang chủ</a></li>
+                <li><a href="{% url 'gioi_thieu' %}" class="active">Giới thiệu</a></li>
+                <li><a href="{% url 'san_pham' %}">Sản phẩm</a></li>
+                <li><a href="{% url 'tin_tuc' %}">Tin tức</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Banner có Canvas chuyển động -->
+    <section class="page-banner">
+        <canvas id="banner-canvas"></canvas>
+        <div class="banner-content">
+            <h1>Giới Thiệu Tập Đoàn</h1>
+            <div class="breadcrumb">
+                <a href="{% url 'trang_chu' %}">Trang chủ</a> / <span>Giới thiệu</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sub Navigation Bar (Giống Hòa Phát) -->
+    <nav class="sub-nav">
+        <ul class="sub-nav-container">
+            <li><a href="#tong-quan" class="active">Tổng quan</a></li>
+            <li><a href="#tam-nhin">Tầm nhìn - Sứ mệnh</a></li>
+            <li><a href="#lich-su">Lịch sử phát triển</a></li>
+            <li><a href="#thanh-tuu">Thành tựu</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <!-- Khối Tổng quan -->
+        <section id="tong-quan" class="about-grid">
+            <div class="about-text">
+                <h2 class="section-title">Tổng quan công ty</h2>
+                <p>Công ty Xây lắp Mai Trang là một trong những đơn vị hàng đầu trong lĩnh vực thi công nhà xưởng quy mô lớn, kết cấu thép và hạ tầng kỹ thuật công nghiệp tại Việt Nam.</p>
+                <p>Với nhiều năm kinh nghiệm cùng đội ngũ kỹ sư chất lượng cao, Mai Trang luôn cam kết mang lại giải pháp toàn diện, tối ưu chi phí và đảm bảo an toàn tuyệt đối cho mọi công trình.</p>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="Công ty Mai Trang">
+            </div>
+        </section>
+
+        <!-- Khối Số liệu nổi bật -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Năm kinh nghiệm</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Dự án hoàn thành</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1,200</div>
+                    <div class="stat-label">Cán bộ nhân viên</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">99%</div>
+                    <div class="stat-label">Khách hàng hài lòng</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Khối Lịch sử phát triển -->
+        <section id="lich-su" style="margin-top: 60px;">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">Lịch sử phát triển</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2010</div>
+                    <p>Thành lập công ty, tập trung vào lĩnh vực tư vấn và thi công công trình dân dụng nhỏ.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2016</div>
+                    <p>Mở rộng quy mô sang thi công nhà xưởng công nghiệp và kết cấu thép quy mô lớn.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2023 - Nay</div>
+                    <p>Trở thành đối tác chiến lược của nhiều tập đoàn công nghiệp lớn trong và ngoài nước.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Script tạo hiệu ứng Banner động -->
+    <script>
+        const canvas = document.getElementById('banner-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const particles = [];
+        const particleCount = 45;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                vx: (Math.random() - 0.5) * 0.6,
+                vy: (Math.random() - 0.5) * 0.6
+            });
+        }
+
+        let gearAngle = 0;
+
+        function drawGear(x, y, outerRadius, teeth, color) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(gearAngle);
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            
+            for (let i = 0; i < teeth; i++) {
+                const angle = (i * 2 * Math.PI) / teeth;
+                const nextAngle = ((i + 0.5) * 2 * Math.PI) / teeth;
+                ctx.arc(0, 0, outerRadius, angle, nextAngle);
+                ctx.arc(0, 0, outerRadius * 0.8, nextAngle, ((i + 1) * 2 * Math.PI) / teeth);
+            }
+            ctx.closePath();
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(0, 0, outerRadius * 0.4, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(10, 37, 64, 0.8)';
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            gearAngle += 0.003;
+
+            // Vẽ họa tiết bánh răng kỹ thuật ngầm ở hai bên
+            drawGear(canvas.width * 0.1, canvas.height * 0.5, 70, 12, 'rgba(255, 255, 255, 0.04)');
+            drawGear(canvas.width * 0.9, canvas.height * 0.5, 90, 14, 'rgba(255, 255, 255, 0.03)');
+
+            // Cập nhật và kết nối hạt chuyển động
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+                ctx.fill();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+
+                    if (dist < 110) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${0.2 * (1 - dist / 110)})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>

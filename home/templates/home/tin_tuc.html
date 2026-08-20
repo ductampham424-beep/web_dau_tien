@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin tức - Công ty Xây lắp Mai Trang</title>
+    <style>
+        :root {
+            --primary-color: #0e385f;
+            --accent-color: #0056b3;
+            --bg-light: #f4f6f9;
+            --text-color: #333333;
+            --text-muted: #6c757d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Topbar & Header */
+        .topbar {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+            padding: 6px 5%;
+            font-size: 13px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background-color: var(--primary-color);
+            color: #fff;
+            font-weight: bold;
+            font-size: 22px;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+
+        .logo-text {
+            color: var(--primary-color);
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        /* Hero Banner */
+        .page-banner {
+            background: linear-gradient(rgba(14, 56, 95, 0.85), rgba(14, 56, 95, 0.85)), 
+                        url('https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1200&q=80') center/cover;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .page-banner h1 {
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Container & News Grid */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            background-color: #e9ecef;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .news-title {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .news-description {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-footer {
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-readmore {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-readmore:hover {
+            text-decoration: underline;
+        }
+
+        .empty-news {
+            text-align: center;
+            padding: 60px 20px;
+            background: #fff;
+            border-radius: 8px;
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        /* Footer Back Button */
+        .back-home-wrap {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .btn-back {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .btn-back:hover {
+            background-color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="navbar">
+            <a href="{% url 'trang_chu' %}" class="logo">
+                <div class="logo-icon">T</div>
+                <div class="logo-text">Công ty Xây lắp Mai Trang</div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="{% url 'trang_chu' %}">Trang chủ</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Sản phẩm</a></li>
+                <li><a href="{% url 'tin_tuc' %}" class="active">Tin tức</a></li>
+                <li><a href="#">Hệ thống</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <h1>Tin Tức & Sự Kiện</h1>
+        <div class="breadcrumb">
+            <a href="{% url 'trang_chu' %}">Trang chủ</a> / <span>Tin tức</span>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="news-grid">
+            {% for tin in ds_tin_tuc %}
+                <article class="news-card">
+                    <!-- Ảnh đại diện tin tức (Nếu Model có trường hinh_anh thì dùng tin.hinh_anh.url, nếu không sẽ dùng ảnh mặc định) -->
+                    {% if tin.hinh_anh %}
+                        <img src="{{ tin.hinh_anh.url }}" alt="{{ tin.tieu_de }}" class="news-image">
+                    {% else %}
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" alt="Mai Trang News" class="news-image">
+                    {% endif %}
+
+                    <div class="news-content">
+                        <h2 class="news-title">{{ tin.tieu_de }}</h2>
+                        <p class="news-description">{{ tin.noi_dung|truncatewords:25 }}</p>
+                        
+                        <div class="news-footer">
+                            <a href="#" class="btn-readmore">Xem chi tiết &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+            {% empty %}
+                <div class="empty-news" style="grid-column: 1 / -1;">
+                    <p>Hiện tại chưa có tin tức nào được cập nhật.</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="back-home-wrap">
+            <a href="{% url 'trang_chu' %}" class="btn-back">&larr; Quay lại trang chủ</a>
+        </div>
+    </main>
+
+</body>
+</html>
