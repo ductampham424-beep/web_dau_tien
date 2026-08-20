@@ -104,10 +104,22 @@
         .stat-number { font-size: 36px; font-weight: 800; color: var(--primary-color); margin-bottom: 5px; }
         .stat-label { font-size: 14px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
 
-        /* Timeline Section (Lịch sử phát triển) */
-        .timeline { position: relative; max-width: 800px; margin: 40px auto; padding: 20px 0; }
-        .timeline-item { padding: 20px 30px; position: relative; background: #f8f9fa; border-left: 4px solid var(--primary-color); margin-bottom: 20px; border-radius: 0 8px 8px 0; }
-        .timeline-year { font-weight: 800; font-size: 20px; color: var(--accent-color); margin-bottom: 5px; }
+       /* Timeline Section (Lịch sử phát triển) */
+.timeline-section { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+.timeline { position: relative; padding-left: 30px; border-left: 3px solid #0e385f; }
+.timeline-item { position: relative; margin-bottom: 30px; }
+.timeline-dot {
+    position: absolute; left: -39px; top: 5px; width: 15px; height: 15px;
+    border-radius: 50%; background-color: #0e385f; border: 3px solid #fff;
+    box-shadow: 0 0 0 3px #0e385f; transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.timeline-content {
+    background: #ffffff; padding: 20px; border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.timeline-item:hover .timeline-content { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(14, 56, 95, 0.15); }
+.timeline-item:hover .timeline-dot { transform: scale(1.3); background-color: #0056b3; }
+.timeline-year { display: inline-block; font-size: 1.2rem; font-weight: bold; color: #0e385f; margin-bottom: 8px; }
     </style>
 </head>
 <body>
@@ -187,23 +199,34 @@
         </section>
 
         <!-- Khối Lịch sử phát triển -->
-        <section id="lich-su" style="margin-top: 60px;">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">Lịch sử phát triển</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-year">2010</div>
-                    <p>Thành lập công ty, tập trung vào lĩnh vực tư vấn và thi công công trình dân dụng nhỏ.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2016</div>
-                    <p>Mở rộng quy mô sang thi công nhà xưởng công nghiệp và kết cấu thép quy mô lớn.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2023 - Nay</div>
-                    <p>Trở thành đối tác chiến lược của nhiều tập đoàn công nghiệp lớn trong và ngoài nước.</p>
-                </div>
+       <section id="lich-su" class="timeline-section">
+    <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">LỊCH SỬ PHÁT TRIỂN</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="timeline-year">2010</span>
+                <p>Thành lập công ty, tập trung vào lĩnh vực tư vấn và thi công công trình dân dụng nhỏ.</p>
             </div>
-        </section>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="timeline-year">2016</span>
+                <p>Mở rộng quy mô sang thi công nhà xưởng công nghiệp và kết cấu thép quy mô lớn.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="timeline-year">2023 - Nay</span>
+                <p>Trở thành đối tác chiến lược của nhiều tập đoàn công nghiệp lớn trong và ngoài nước.</p>
+            </div>
+        </div>
+    </div>
+</section>
     </main>
 
     <!-- Script tạo hiệu ứng Banner động -->
