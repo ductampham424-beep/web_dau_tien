@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giới thiệu - Công ty Xây lắp Mai Trang</title>
     <style>
+        html {
+        scroll-behavior: smooth;
+    }
         :root {
             --primary-color: #0e385f;
             --accent-color: #0056b3;
@@ -151,17 +154,46 @@
         </div>
     </section>
 
-    <!-- Sub Navigation Bar (Giống Hòa Phát) -->
-    <nav class="sub-nav">
-        <ul class="sub-nav-container">
-            <li><a href="#tong-quan" class="active">Tổng quan</a></li>
-            <li><a href="#tam-nhin">Tầm nhìn - Sứ mệnh</a></li>
-            <li><a href="#lich-su">Lịch sử phát triển</a></li>
-            <li><a href="#thanh-tuu">Thành tựu</a></li>
-        </ul>
-       
+    <!-- Sub Navigation Bar -->
+<nav class="sub-nav">
+    <ul class="sub-nav-container">
+        <li><a href="#tong-quan" class="active">Tổng quan</a></li>
+        <li><a href="#tam-nhin">Tầm nhìn - Sứ mệnh</a></li>
+        <li><a href="#lich-su">Lịch sử phát triển</a></li>
+        <li><a href="#thanh-tuu">Thành tựu</a></li>
+    </ul>
+</nav>
 
-    </nav>
+<main class="container">
+    <!-- Khối 1: Tổng quan -->
+    <section id="tong-quan" class="about-grid">
+        <div class="about-text">
+            <h2 class="section-title">Tổng quan công ty</h2>
+            <p>Công ty Xây lắp Mai Trang là một trong những đơn vị hàng đầu trong lĩnh vực thi công nhà xưởng quy mô lớn, kết cấu thép và hạ tầng kỹ thuật công nghiệp tại Việt Nam.</p>
+            <p>Với nhiều năm kinh nghiệm cùng đội ngũ kỹ sư chất lượng cao, Mai Trang luôn cam kết mang lại giải pháp toàn diện, tối ưu chi phí và đảm bảo an toàn tuyệt đối cho mọi công trình.</p>
+        </div>
+        <div class="about-img">
+            <img src="{% static 'images/dem-sai-gon.jpg' %}" alt="Công ty Mai Trang">
+        </div>
+    </section>
+
+    <!-- Khối 2: Tầm nhìn - Sứ mệnh -->
+    <section id="tam-nhin">
+        <h2 class="section-title">Tầm nhìn & Sứ mệnh</h2>
+        <!-- Thêm nội dung Tầm nhìn - Sứ mệnh vào đây -->
+    </section>
+
+    <!-- Khối 3: Lịch sử phát triển (Đã làm ở bước trước) -->
+    <section id="lich-su" class="timeline-section">
+        <!-- Nội dung Timeline Lịch sử phát triển nằm ở đây -->
+    </section>
+
+    <!-- Khối 4: Thành tựu -->
+    <section id="thanh-tuu">
+        <h2 class="section-title">Thành tựu</h2>
+        <!-- Thêm nội dung Thành tựu vào đây -->
+    </section>
+</main>
 
     <main class="container">
         <!-- Khối Tổng quan -->
